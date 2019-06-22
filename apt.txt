@@ -2,3 +2,5 @@ lolcat
 cowsay
 htop
 cmake
+golang
+unzip

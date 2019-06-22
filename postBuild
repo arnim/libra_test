@@ -1,0 +1,22 @@
+#!/bin/bash
+
+curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain stable
+CARGO_ENV="$HOME/.cargo/env"
+source "$CARGO_ENV"
+
+# Run update in order to download and install the checked in toolchain
+rustup update
+
+# Add all the components that we need
+rustup component add rustfmt
+rustup component add clippy
+
+
+PROTOC_VERSION=3.8.0
+PROTOC_ZIP=protoc-$PROTOC_VERSION-linux-x86_64.zip
+curl -OL https://github.com/google/protobuf/releases/download/v$PROTOC_VERSION/$PROTOC_ZIP
+sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc
+sudo unzip -o $PROTOC_ZIP -d /usr/local include/*
+rm -f $PROTOC_ZIP
+
+git clone https://github.com/libra/libra.git
