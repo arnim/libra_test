@@ -1,2 +1,4 @@
 lolcat
 cowsay
+htop
+cmake
