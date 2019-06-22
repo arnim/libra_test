@@ -4,3 +4,4 @@ htop
 cmake
 golang
 unzip
+protobuf-compiler
